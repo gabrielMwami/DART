@@ -1,0 +1,69 @@
+Object-Oriented Model with Classes and Inheritance:
+We’ll define a base class called Vehicle with common properties like make, model, and year.
+We’ll create two derived classes: Car and Motorcycle, each inheriting from Vehicle. These subclasses will have additional properties specific to cars and motorcycles.
+Class Implementing an Interface:
+We’ll define an interface (abstract class) called Animal with an abstract method makeSound().
+We’ll create a class Dog that implements the Animal interface. The Dog class will override the makeSound() method to bark.
+Overriding an Inherited Method:
+We’ll override the toString() method inherited from the base Object class in our Vehicle class. This method will provide a custom string representation for our vehicles.
+Instance Initialized with Data from a File:
+We’ll read data from a text file (e.g., vehicles.txt) containing vehicle information (make, model, year).
+We’ll create instances of Car and Motorcycle using the data from the file.
+Method Demonstrating Loop Usage:
+We’ll create a method in the Car class that demonstrates a loop (e.g., printing a list of features).
+For simplicity, we’ll use a for loop to iterate through an array of car features.
+Here’s the code example:
+
+Dart
+
+// 1. Base class: Vehicle
+class Vehicle {
+  String make;
+  String model;
+  int year;
+
+  Vehicle(this.make, this.model, this.year);
+
+  @override
+  String toString() {
+    return '$year $make $model';
+  }
+}
+
+// 2. Interface: Animal
+abstract class Animal {
+  void makeSound();
+}
+
+// 3. Derived class: Car
+class Car extends Vehicle {
+  Car(String make, String model, int year) : super(make, model, year);
+
+  void listFeatures() {
+    final features = ['Bluetooth', 'Backup camera', 'Navigation'];
+    for (var feature in features) {
+      print('Car feature: $feature');
+    }
+  }
+}
+
+// 4. Derived class: Motorcycle
+class Motorcycle extends Vehicle {
+  Motorcycle(String make, String model, int year) : super(make, model, year);
+}
+
+// 5. Main function
+void main() {
+  // Read data from a file (vehicles.txt) and create instances
+  final carData = ['Toyota', 'Camry', 2022];
+  final motorcycleData = ['Harley-Davidson', 'Sportster', 2021];
+
+  final myCar = Car(carData[0], carData[1], carData[2]);
+  final myMotorcycle = Motorcycle(motorcycleData[0], motorcycleData[1], motorcycleData[2]);
+
+  // Demonstrate method with loop
+  myCar.listFeatures();
+
+  // Print vehicle details
+  print('My car: $myCar');
+  print('My motorcycle: $myMotorcycle');
